@@ -3,9 +3,11 @@
 namespace Database\Seeders;
 
 use App\Models\Field;
+use App\Models\Subscriber;
 use App\Models\User;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+
+// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class DatabaseSeeder extends Seeder
 {
@@ -22,5 +24,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Field::factory(5)->create();
+
+        Subscriber::factory(10)->create();
     }
 }
