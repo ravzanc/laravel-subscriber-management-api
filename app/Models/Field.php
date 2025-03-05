@@ -4,10 +4,13 @@ namespace App\Models;
 
 use ApiPlatform\Metadata\ApiResource;
 use App\Enums\FieldType;
+use App\Http\Requests\FieldFormRequest;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-#[ApiResource]
+#[ApiResource(
+    rules: FieldFormRequest::class,
+)]
 class Field extends Model
 {
     use HasFactory;
