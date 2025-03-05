@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Field;
 use App\Models\Subscriber;
+use App\Models\FieldValue;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -23,8 +24,14 @@ class DatabaseSeeder extends Seeder
             'email' => 'test@example.com',
         ]);
 
-        Field::factory(5)->create();
+        $fieldsCount = 3;
+        $subscribersCount = 2;
+        $fieldValuesCount = 1;
 
-        Subscriber::factory(10)->create();
+        Field::factory($fieldsCount)->create();
+
+        Subscriber::factory($subscribersCount)->create();
+
+        FieldValue::factory($fieldValuesCount)->create();
     }
 }
