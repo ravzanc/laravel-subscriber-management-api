@@ -20,8 +20,8 @@ return [
     ],
 
     'formats' => [
+        'jsonapi' => ['application/vnd.api+json'],
         'jsonld' => ['application/ld+json'],
-        //'jsonapi' => ['application/vnd.api+json'],
         //'csv' => ['text/csv'],
     ],
 
