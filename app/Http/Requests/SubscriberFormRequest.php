@@ -25,9 +25,9 @@ class SubscriberFormRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'email' => ['email', 'unique:subscribers', new ActiveEmailHostDomain()],
-            'name' => 'string|unique:fields|min:3|max:255',
-            'state' => Rule::enum(SubscriberState::class),
+            'data.*.email' => ['required', 'email', 'unique:subscribers', new ActiveEmailHostDomain()],
+            'data.*.name' => 'required|string|unique:fields|min:3|max:255',
+            'data.*.state' => ['required', Rule::enum(SubscriberState::class)],
         ];
     }
 }

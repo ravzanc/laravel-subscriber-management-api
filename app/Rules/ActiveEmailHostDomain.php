@@ -17,6 +17,11 @@ class ActiveEmailHostDomain implements ValidationRule
     {
         // Extract the host domain from the email address
         $hostDomain = substr(strrchr($value, "@"), 1);
+        if (empty($hostDomain)) {
+            $fail("The {$attribute}'s host domain must be specified");
+
+            return;
+        }
 
         // Check if the host domain is active
         // Caching check results to optimize the DNS Lookups
@@ -27,8 +32,9 @@ class ActiveEmailHostDomain implements ValidationRule
                 return checkdnsrr($hostDomain);
             }
         );
+
         if (false === $isHostDomainActive) {
-            $fail("{$attribute}'s host domain must be active");
+            $fail("The {$attribute}'s host domain must be active");
         }
     }
 }

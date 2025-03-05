@@ -12,20 +12,38 @@ class FieldApiTest extends TestCase
 
     public function test_get_all_fields(): void
     {
-        $this->getJsonApi('/');
+        $response  = $this->getJsonApi('/');
+
+        $response->assertStatus(200);
+        $response->assertJsonStructure(['data']);
     }
 
     public function test_get_field(): void
     {
-        $this->getJsonApi('/1');
+        $response = $this->getJsonApi('/1');
+
+        $response->assertStatus(200);
+        $response->assertJsonStructure(['data']);
     }
 
     public function test_create_field(): void
     {
-        $this->postJsonApi([
+        $response = $this->postJsonApi([
             'title' => 'test-country',
             'type' => FieldType::STRING->value,
         ]);
+
+        $response->assertStatus(201);
+    }
+
+    public function test_create_duplicated_field(): void
+    {
+        $response = $this->postJsonApi([
+            'title' => 'test-country',
+            'type' => FieldType::STRING->value,
+        ]);
+
+        $response->assertStatus(422);
     }
 
     public function test_update_field(): void
@@ -33,13 +51,15 @@ class FieldApiTest extends TestCase
         $createdFieldId = Field::query()->where(['title' => 'test-country'])
             ->first('id')->id;
 
-        $this->patchJsonMerge(
+        $response = $this->patchJsonMerge(
             $createdFieldId,
             [
                 'title' => 'test-birthday',
                 'type' => FieldType::DATE->value,
             ]
         );
+
+        $response->assertStatus(200);
     }
 
     public function test_delete_field(): void
@@ -47,6 +67,8 @@ class FieldApiTest extends TestCase
         $updatedFieldId = Field::query()->where(['title' => 'test-birthday'])
             ->first('id')->id;
 
-        $this->deleteJsonApi($updatedFieldId);
+        $response = $this->deleteJsonApi($updatedFieldId);
+
+        $response->assertStatus(204);
     }
 }

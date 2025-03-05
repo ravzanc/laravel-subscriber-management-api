@@ -19,7 +19,7 @@ abstract class TestCase extends BaseTestCase
     protected string $resource;
     protected function getJsonApi(string $path): TestResponse
     {
-        $response = $this->getJson(
+        return $this->getJson(
             sprintf(
                 "api/%s/%s",
                 $this->resource,
@@ -27,16 +27,11 @@ abstract class TestCase extends BaseTestCase
             ),
             self::JSONAPI_HEADERS
         );
-
-        $response->assertStatus(200);
-        $response->assertJsonStructure(['data']);
-
-        return $response;
     }
 
     protected function postJsonApi(array $data): TestResponse
     {
-        $response = $this->postJson(
+        return $this->postJson(
             sprintf(
                 "api/%s",
                 $this->resource,
@@ -46,15 +41,11 @@ abstract class TestCase extends BaseTestCase
             ]],
             self::JSONAPI_HEADERS
         );
-
-        $response->assertStatus(201);
-
-        return $response;
     }
 
     protected function patchJsonMerge(int $id, array $data): TestResponse
     {
-        $response = $this->patchJson(
+        return $this->patchJson(
             sprintf(
                 "api/%s/%d",
                 $this->resource,
@@ -63,15 +54,11 @@ abstract class TestCase extends BaseTestCase
             $data,
             self::JSONPATCH_HEADERS
         );
-
-        $response->assertStatus(200);
-
-        return $response;
     }
 
     public function deleteJsonApi(int $id): TestResponse
     {
-        $response = $this->deleteJson(
+        return $this->deleteJson(
             sprintf(
                 "api/%s/%d",
                 $this->resource,
@@ -80,9 +67,5 @@ abstract class TestCase extends BaseTestCase
             [],
             self::JSONAPI_HEADERS
         );
-
-        $response->assertStatus(204);
-
-        return $response;
     }
 }
