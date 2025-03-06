@@ -5,8 +5,8 @@ use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Auth\AuthenticationException;
 
 return [
-    'title' => 'API Platform',
-    'description' => 'My awesome API',
+    'title' => 'Subscription Management API',
+    'description' => 'Handle Subscriber and Field resources',
     'version' => '1.0.0',
 
     'routes' => [
@@ -100,17 +100,17 @@ return [
         //    'name' => 'Apache 2.0',
         //    'url' => 'https://www.apache.org/licenses/LICENSE-2.0.html',
         //],
-        //'contact' => [
-        //    'name' => 'API Support',
-        //    'url' => 'https://www.example.com/support',
-        //    'email' => 'support@example.com',
-        //],
+        'contact' => [
+            'name' => 'API Support',
+            'url' => 'https://www.github.com/ravzanc',
+            'email' => 'cornea.v.razvan@gmail.com',
+        ],
     ],
 
     'url_generation_strategy' => UrlGeneratorInterface::ABS_PATH,
 
     'serializer' => [
-        'hydra_prefix' => false,
+        'hydra_prefix' => 'hydra',
         // 'datetime_format' => \DateTimeInterface::RFC3339
     ]
 ];
