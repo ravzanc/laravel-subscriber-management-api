@@ -24,7 +24,7 @@ class FieldFormRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'data.*.title' => 'required|string|unique:fields|min:3|max:255',
+            'data.*.title' => 'required|string|unique:fields,title|min:3|max:255',
             'data.*.type' => ['required', Rule::enum(FieldType::class)],
         ];
     }
