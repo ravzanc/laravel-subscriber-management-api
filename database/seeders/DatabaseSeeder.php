@@ -24,14 +24,20 @@ class DatabaseSeeder extends Seeder
             'email' => 'test@example.com',
         ]);
 
-        $fieldsCount = 3;
-        $subscribersCount = 2;
-        $fieldValuesCount = 1;
+        $fieldsCount = 5;
+        $subscribersCount = 10;
 
         Field::factory($fieldsCount)->create();
 
         Subscriber::factory($subscribersCount)->create();
 
-        FieldValue::factory($fieldValuesCount)->create();
+        foreach (range(1, $fieldsCount) as $fieldId) {
+            foreach (range(1, $subscribersCount) as $subscriberId) {
+                FieldValue::factory()->create([
+                    'subscriber_id' => $subscriberId,
+                    'field_id' => $fieldId,
+                ]);
+            }
+        }
     }
 }

@@ -21,7 +21,7 @@ class FieldValueFactory extends Factory
         return [
             'subscriber_id' => Subscriber::factory(),
             'field_id' => Field::factory(),
-            'value' => $this->faker->words(2, true),
+            'value' => 'fake-' . $this->faker->words(2, true),
         ];
     }
 }
