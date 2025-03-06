@@ -5,7 +5,7 @@ use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Auth\AuthenticationException;
 
 return [
-    'title' => 'Subscription Management API',
+    'title' => 'Subscriber Management API',
     'description' => 'Handle Subscriber and Field resources',
     'version' => '1.0.0',
 
