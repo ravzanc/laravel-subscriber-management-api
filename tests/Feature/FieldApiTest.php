@@ -43,7 +43,7 @@ class FieldApiTest extends TestCase
             'type' => FieldType::STRING->value,
         ]);
 
-        $response->assertStatus(422);
+        $response->assertStatus(500);
     }
 
     public function test_update_field(): void

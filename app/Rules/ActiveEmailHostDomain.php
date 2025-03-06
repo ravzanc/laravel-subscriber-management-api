@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Support\Facades\Cache;
 
-class ActiveEmailHostDomain implements ValidationRule
+final class ActiveEmailHostDomain implements ValidationRule
 {
     /**
      * Run the validation rule.

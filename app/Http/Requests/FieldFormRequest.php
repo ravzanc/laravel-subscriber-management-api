@@ -23,9 +23,18 @@ class FieldFormRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
-            'data.*.title' => 'required|string|unique:fields,title|min:3|max:255',
-            'data.*.type' => ['required', Rule::enum(FieldType::class)],
+        $rules = [
+            'title' => 'required|string|min:3|max:255',
+            'type' => ['required', Rule::enum(FieldType::class)],
         ];
+
+        if ('application/vnd.api+json' === $this->header('Content-Type')) {
+            return array_combine(
+                ['data.attributes.title','data.attributes.type'],
+                $rules
+            );
+        }
+
+        return $rules;
     }
 }

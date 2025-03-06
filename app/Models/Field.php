@@ -15,6 +15,7 @@ use Illuminate\Support\Collection;
  * @property Collection fieldValues
  */
 #[ApiResource(
+    order: ["id" => "DESC"],
     rules: FieldFormRequest::class,
 )]
 class Field extends Model

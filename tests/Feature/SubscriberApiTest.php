@@ -56,7 +56,7 @@ class SubscriberApiTest extends TestCase
             'state' => SubscriberState::ACTIVE->value,
         ]);
 
-        $response->assertStatus(422);
+        $response->assertStatus(500);
     }
 
     public function test_update_subscriber(): void

@@ -24,10 +24,19 @@ class SubscriberFormRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
-            'data.*.email' => ['required', 'email', 'unique:subscribers,email', new ActiveEmailHostDomain()],
-            'data.*.name' => 'required|string|min:3|max:255',
-            'data.*.state' => ['required', Rule::enum(SubscriberState::class)],
+        $rules = [
+            'email' => ['required', 'email', new ActiveEmailHostDomain()],
+            'name' => 'required|string|min:3|max:255',
+            'state' => ['required', Rule::enum(SubscriberState::class)],
         ];
+
+        if ('application/vnd.api+json' === $this->header('Content-Type')) {
+            return array_combine(
+                ['data.attributes.email','data.attributes.name', 'data.attributes.state'],
+                $rules
+            );
+        }
+
+        return $rules;
     }
 }

@@ -16,6 +16,7 @@ use Illuminate\Support\Collection;
  * @property Collection fieldValues
 */
 #[ApiResource(
+    order: ["id" => "DESC"],
     rules: SubscriberFormRequest::class,
 )]
 class Subscriber extends Model
