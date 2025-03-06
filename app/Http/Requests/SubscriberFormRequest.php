@@ -25,7 +25,7 @@ class SubscriberFormRequest extends FormRequest
     public function rules(): array
     {
         $rules = [
-            'email' => ['required', 'email', new ActiveEmailHostDomain()],
+            'email' => ['required', 'email', app(ActiveEmailHostDomain::class)],
             'name' => 'required|string|min:3|max:255',
             'state' => ['required', Rule::enum(SubscriberState::class)],
         ];
