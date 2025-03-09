@@ -1,4 +1,4 @@
-# Subscriber Management API built with Laravel
+# Subscriber Management API built with Laravel (PoC)
 
 ## Project Setup
 
@@ -49,3 +49,10 @@ Open http://127.0.0.1:8000/api
 
 ### Further considerations
 This project is built using [API Platform for Laravel Projects](https://api-platform.com/docs/laravel/) for rapid development.
+
+#### Known edge cases that weren't handled:
+* Incorrect Field Value Types 
+  * submitting a field_value with a value that does not match the field's type (e.g., a string for a date field))
+* Missing or Invalid Relationships 
+  * submitting a subscriber without the required field values relationship
+  * submitting a field value without a field id or value
