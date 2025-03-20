@@ -48,7 +48,8 @@ Each field value belongs to a single field.
 Open http://127.0.0.1:8000/api
 
 ### Further considerations
-This project is built using [API Platform for Laravel Projects](https://api-platform.com/docs/laravel/) for rapid development.
+This project is built using [API Platform for Laravel Projects](https://api-platform.com/docs/laravel/) for rapid development 
+and ability to generate a tiny [Vue.js client](https://github.com/ravzanc/vue-subscriber-management-client).
 
 #### Known edge cases that weren't handled:
 * Incorrect Field Value Types 
